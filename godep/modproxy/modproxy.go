@@ -67,12 +67,12 @@ type Info struct {
 
 var ErrModuleNotFound = errors.New("modproxy: module not found")
 
-type ErrProxyNotOK struct {
+type ProxyNotOKError struct {
 	StatusCode int
 	Err        string
 }
 
-func (e ErrProxyNotOK) Error() string {
+func (e ProxyNotOKError) Error() string {
 	return e.Err
 }
 
@@ -105,7 +105,7 @@ func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (Info
 			return Info{}, fmt.Errorf("could not ReadAll from Response Body (%w)", err)
 		}
 
-		return Info{}, ErrProxyNotOK{StatusCode: resp.StatusCode, Err: string(b)}
+		return Info{}, ProxyNotOKError{StatusCode: resp.StatusCode, Err: string(b)}
 	}
 
 	decoder := json.NewDecoder(resp.Body)
