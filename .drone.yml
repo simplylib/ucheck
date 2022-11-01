@@ -10,32 +10,32 @@ trigger:
 
 steps:
   - name: tidy
-    image: golang:1.19.1
+    image: golang:1.19.2
     commands:
       - go mod tidy
       - git diff --exit-code -- go.mod go.sum
     depends_on: [clone]
 
   - name: lint
-    image: golangci/golangci-lint:v1.49.0
+    image: golangci/golangci-lint:v1.50.1
     commands:
       - golangci-lint run -v -E gofmt
     depends_on: [clone]
 
   - name: vet
-    image: golang:1.19.1
+    image: golang:1.19.2
     commands:
       - go vet -race ./...
     depends_on: [clone]
 
   - name: build
-    image: golang:1.19.1
+    image: golang:1.19.2
     commands:
       - go build -race .
     depends_on: [clone]
 
   - name: gosec
-    image: securego/gosec:2.13.1
+    image: securego/gosec:2.14.0
     commands:
       - gosec -tests ./...
     depends_on: [clone]
@@ -51,6 +51,6 @@ trigger:
 
 steps:
   - name: test
-    image: golang:1.19.1
+    image: golang:1.19.2
     commands:
       - go test -v -race ./...
