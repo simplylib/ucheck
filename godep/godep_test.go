@@ -10,7 +10,7 @@ import (
 	"github.com/simplylib/ucheck/internal/modproxymocker"
 )
 
-//todo: add short tests for no server interaction
+// todo: add short tests for no server interaction
 func TestCheckGoModBytesForUpdates(t *testing.T) {
 	tests := []struct {
 		name     string

@@ -16,13 +16,13 @@ import (
 type Module struct {
 	Path     string
 	Versions []string
-} //todo: add GetModule() with all information
+} // todo: add GetModule() with all information
 
 type ModProxy struct {
 	Endpoint string
 }
 
-//ListVersions of a modulePath as an unsorted []string, []string is nil when there are no versions
+// ListVersions of a modulePath as an unsorted []string, []string is nil when there are no versions
 func (p ModProxy) ListVersions(ctx context.Context, modulePath string) ([]string, error) {
 	req, err := http.NewRequestWithContext(ctx, "GET", p.Endpoint+"/"+modulePath+"/@v/list", nil)
 	if err != nil {
@@ -59,9 +59,9 @@ func (p ModProxy) ListVersions(ctx context.Context, modulePath string) ([]string
 }
 
 type Info struct {
-	//Version of Module
+	// Version of Module
 	Version string `json:"version"`
-	//Time module was committed
+	// Time module was committed
 	Time time.Time `json:"time"`
 }
 
