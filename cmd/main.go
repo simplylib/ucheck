@@ -18,11 +18,15 @@ func run() error {
 	flag.CommandLine.Usage = func() {
 		fmt.Fprintln(
 			flag.CommandLine.Output(),
-			"Usage: "+os.Args[0]+" <flags> <project dir> <project dir 2>",
+			"Usage: "+os.Args[0]+" <flags> <project dir(s)>\n",
 		)
 		fmt.Fprintln(
 			flag.CommandLine.Output(),
-			"Project directory is optional and can be multiple directories seperated by a space, defaults to current directory",
+			"Project directory is optional and can be multiple directories seperated by a space, defaults to current directory\n",
+		)
+		fmt.Fprintln(
+			flag.CommandLine.Output(),
+			"Flags: ",
 		)
 		flag.CommandLine.PrintDefaults()
 	}
