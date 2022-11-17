@@ -22,7 +22,7 @@ func run() error {
 		)
 		fmt.Fprintln(
 			flag.CommandLine.Output(),
-			"Project directory is optional and can be multiple directories seperated by a space, defaults to current directory",
+			"Project directory is optional and can be multiple directories separated by a space, defaults to current directory",
 		)
 		fmt.Fprintln(
 			flag.CommandLine.Output(),
