@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/simplylib/ucheck/godep/modproxy"
 	"github.com/simplylib/ucheck/internal/modproxymocker"
+	"github.com/simplylib/ucheck/modproxy"
 )
 
 // todo: add short tests for no server interaction

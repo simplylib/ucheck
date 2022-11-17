@@ -3,7 +3,7 @@ package modproxymocker
 import (
 	"context"
 
-	"github.com/simplylib/ucheck/godep/modproxy"
+	"github.com/simplylib/ucheck/modproxy"
 )
 
 type MockModProxy struct {

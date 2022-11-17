@@ -24,7 +24,7 @@ type ModProxy struct {
 
 // ListVersions of a modulePath as an unsorted []string, []string is nil when there are no versions
 func (p ModProxy) ListVersions(ctx context.Context, modulePath string) ([]string, error) {
-	req, err := http.NewRequestWithContext(ctx, "GET", p.Endpoint+"/"+modulePath+"/@v/list", nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.Endpoint+"/"+modulePath+"/@v/list", nil)
 	if err != nil {
 		return nil, fmt.Errorf("could not create new Request (%w)", err)
 	}
@@ -78,7 +78,7 @@ func (e ProxyNotOKError) Error() string {
 
 // GetLatestVersion of module defined by modulePath
 func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (Info, error) {
-	req, err := http.NewRequestWithContext(ctx, "GET", p.Endpoint+"/"+modulePath+"/@latest", nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.Endpoint+"/"+modulePath+"/@latest", nil)
 	if err != nil {
 		return Info{}, fmt.Errorf("could not create new Request (%w)", err)
 	}

@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/simplylib/ucheck/godep"
-	"github.com/simplylib/ucheck/godep/modproxy"
+	"github.com/simplylib/ucheck/modproxy"
 )
 
 func run() error {
@@ -22,11 +22,11 @@ func run() error {
 		)
 		fmt.Fprintln(
 			flag.CommandLine.Output(),
-			"Project directory is optional and can be multiple directories seperated by a space, defaults to current directory\n",
+			"Project directory is optional and can be multiple directories seperated by a space, defaults to current directory",
 		)
 		fmt.Fprintln(
 			flag.CommandLine.Output(),
-			"Flags: ",
+			"\nFlags: ",
 		)
 		flag.CommandLine.PrintDefaults()
 	}

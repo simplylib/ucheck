@@ -3,7 +3,7 @@ package godep
 import (
 	"context"
 
-	"github.com/simplylib/ucheck/godep/modproxy"
+	"github.com/simplylib/ucheck/modproxy"
 	"golang.org/x/mod/modfile"
 )
 
