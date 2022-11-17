@@ -2,6 +2,7 @@ package godep
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/simplylib/ucheck/modproxy"
 	"golang.org/x/mod/modfile"
@@ -21,7 +22,7 @@ type Update struct {
 func CheckGoModBytesForUpdates(ctx context.Context, proxy ModProxy, modBytes []byte) ([]Update, error) {
 	file, err := modfile.Parse("go.mod", modBytes, nil)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not parse mod bytes (%w)", err)
 	}
 	requires := file.Require
 	if len(requires) == 0 {
@@ -33,7 +34,7 @@ func CheckGoModBytesForUpdates(ctx context.Context, proxy ModProxy, modBytes []b
 	for _, require := range requires {
 		info, err = proxy.GetLatestVersion(ctx, require.Mod.Path)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("could not get latest version of (%v) from proxy due to error (%w)", require.Mod.Path, err)
 		}
 		if info.Version == require.Mod.Version {
 			continue
