@@ -5,7 +5,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"golang.org/x/mod/semver"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -14,6 +13,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"golang.org/x/mod/semver"
 )
 
 func getVersionsFromGoBinary(modulePath string) ([]string, error) {

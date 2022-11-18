@@ -16,7 +16,7 @@ import (
 
 func run() error {
 	goProxy := flag.String("goproxy", "https://proxy.golang.org", "base url of go proxy server")
-	updateLimit := flag.Int("t", runtime.NumCPU()*2, "number of modules to check updates for at once")
+	updateLimit := flag.Int("t", runtime.NumCPU(), "number of modules to check updates for at once")
 	verbose := flag.Bool("v", false, "be more verbose about what we are doing")
 
 	flag.CommandLine.Usage = func() {

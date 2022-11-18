@@ -76,7 +76,6 @@ func (gp *GoDep) CheckGoModBytesForUpdates(ctx context.Context, b []byte) ([]Upd
 	}
 
 	return updates, nil
-
 }
 
 // CheckGoModBytesForUpdates returns a slice of Update's available in passed modBytes
