@@ -49,6 +49,8 @@ func run() error {
 		paths = flag.Args()
 	}
 
+	checker := godep.GoDep{MaxRequests: *updateLimit, Proxy: modproxy.ModProxy{Endpoint: *goProxy}}
+
 	var eg errgroup.Group
 	eg.SetLimit(*updateLimit)
 
@@ -64,7 +66,7 @@ func run() error {
 				return fmt.Errorf("could not read file (%v) error (%w)", paths[i], err)
 			}
 
-			updates, err := godep.CheckGoModBytesForUpdates(context.Background(), modproxy.ModProxy{Endpoint: *goProxy}, buf)
+			updates, err := checker.CheckGoModBytesForUpdates(context.Background(), buf)
 			if err != nil {
 				return fmt.Errorf("could not check (%v) for updates due to error (%w)", filepath.Join(paths[i], string(filepath.Separator)+"go.mod"), err)
 			}

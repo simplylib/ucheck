@@ -39,9 +39,9 @@ require golang.org/x/mod v0.5.0`),
 			},
 			want: []Update{
 				{
-					module:     "golang.org/x/mod",
-					oldVersion: "v0.5.0",
-					newVersion: "v0.5.2",
+					Module:     "golang.org/x/mod",
+					OldVersion: "v0.5.0",
+					NewVersion: "v0.5.2",
 				},
 			},
 			wantErr: false,
