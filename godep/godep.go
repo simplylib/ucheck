@@ -29,8 +29,10 @@ func CheckGoModBytesForUpdates(ctx context.Context, proxy ModProxy, modBytes []b
 		return nil, nil
 	}
 
-	var updates []Update
-	var info modproxy.Info
+	var (
+		updates []Update
+		info    modproxy.Info
+	)
 	for _, require := range requires {
 		info, err = proxy.GetLatestVersion(ctx, require.Mod.Path)
 		if err != nil {
