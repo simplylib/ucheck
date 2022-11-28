@@ -123,3 +123,13 @@ func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (Info
 
 	return info, nil
 }
+
+const DefaultGoProxy = "https://proxy.golang.org"
+
+func ListVersions(ctx context.Context, modulePath string) ([]string, error) {
+	return ModProxy{Endpoint: DefaultGoProxy}.ListVersions(ctx, modulePath)
+}
+
+func GetLatestVersion(ctx context.Context, modulePath string) (Info, error) {
+	return ModProxy{Endpoint: DefaultGoProxy}.GetLatestVersion(ctx, modulePath)
+}
