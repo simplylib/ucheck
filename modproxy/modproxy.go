@@ -23,8 +23,9 @@ type ModProxy struct {
 }
 
 // ListVersions of a modulePath as an unsorted []string, []string is nil when there are no versions
-func (p ModProxy) ListVersions(ctx context.Context, modulePath string) ([]string, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.Endpoint+"/"+modulePath+"/@v/list", nil)
+func (p ModProxy) ListVersions(ctx context.Context, modulePath string) (versions []string, err error) {
+	var req *http.Request
+	req, err = http.NewRequestWithContext(ctx, http.MethodGet, p.Endpoint+"/"+modulePath+"/@v/list", nil)
 	if err != nil {
 		return nil, fmt.Errorf("could not create new Request (%w)", err)
 	}
@@ -52,7 +53,7 @@ func (p ModProxy) ListVersions(ctx context.Context, modulePath string) ([]string
 	}
 
 	vs := strings.Split(string(resBytes[:len(resBytes)-1]), "\n")
-	versions := make([]string, len(vs))
+	versions = make([]string, len(vs))
 	copy(versions, vs)
 
 	return versions, nil
@@ -77,8 +78,9 @@ func (e ProxyNotOKError) Error() string {
 }
 
 // GetLatestVersion of module defined by modulePath
-func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (Info, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, p.Endpoint+"/"+modulePath+"/@latest", nil)
+func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (info Info, err error) {
+	var req *http.Request
+	req, err = http.NewRequestWithContext(ctx, http.MethodGet, p.Endpoint+"/"+modulePath+"/@latest", nil)
 	if err != nil {
 		return Info{}, fmt.Errorf("could not create new Request (%w)", err)
 	}
@@ -110,7 +112,6 @@ func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (Info
 
 	decoder := json.NewDecoder(resp.Body)
 
-	var info Info
 	err = decoder.Decode(&info)
 	if err != nil {
 		return Info{}, fmt.Errorf("could not Json decode Response from /@latest goproxy endpoint (%w)", err)
