@@ -2,5 +2,5 @@ github.com/simplylib/errgroup v0.0.5 h1:gQKKGMScxgK5/GyEd3mbt74CfOAquan3a9qGYUIJ
 github.com/simplylib/errgroup v0.0.5/go.mod h1:0vzyItOFZKama20/L6Pec4Nblvp5CSrkVQmUUVAwv28=
 github.com/simplylib/multierror v0.0.2 h1:72szhIdMVOyyT7cJ9H7BgehRoWe54ELWHbSlQ/f8Z8Y=
 github.com/simplylib/multierror v0.0.2/go.mod h1:na9RFlzGQKHwZjlfE0guLlmyGsdRuSSksqTeuwEVItQ=
-golang.org/x/mod v0.10.0 h1:lFO9qtOdlre5W1jxS3r/4szv2/6iXxScdzjoBMXNhYk=
-golang.org/x/mod v0.10.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=
+golang.org/x/mod v0.11.0 h1:bUO06HqtnRcc/7l71XBe4WcqTZ+3AH1J59zWDDwLKgU=
+golang.org/x/mod v0.11.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=
