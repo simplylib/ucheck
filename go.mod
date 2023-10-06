@@ -5,5 +5,5 @@ go 1.18
 require (
 	github.com/simplylib/errgroup v0.0.5
 	github.com/simplylib/multierror v0.0.2
-	golang.org/x/mod v0.12.0
+	golang.org/x/mod v0.13.0
 )
