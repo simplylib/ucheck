@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"strings"
 	"time"
-
-	"github.com/simplylib/multierror"
 )
 
 type Module struct {
@@ -38,7 +36,7 @@ func (p ModProxy) ListVersions(ctx context.Context, modulePath string) (versions
 
 	defer func() {
 		if err2 := resp.Body.Close(); err != nil {
-			err = multierror.Append(err, fmt.Errorf("could not close Response Body (%w)", err2))
+			err = errors.Join(err, fmt.Errorf("could not close Response Body (%w)", err2))
 		}
 	}()
 
@@ -93,7 +91,7 @@ func (p ModProxy) GetLatestVersion(ctx context.Context, modulePath string) (info
 
 	defer func() {
 		if err2 := resp.Body.Close(); err2 != nil {
-			err = multierror.Append(err, fmt.Errorf("could not close Response Body (%w)", err2))
+			err = errors.Join(err, fmt.Errorf("could not close Response Body (%w)", err2))
 		}
 	}()
 
