@@ -4,5 +4,5 @@ go 1.24
 
 require (
 	github.com/simplylib/errgroup v0.0.6
-	golang.org/x/mod v0.26.0
+	golang.org/x/mod v0.27.0
 )
