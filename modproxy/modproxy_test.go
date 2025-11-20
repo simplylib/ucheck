@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
+	"errors"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -40,7 +40,7 @@ func getVersionsFromGoBinary(modulePath string) ([]string, error) {
 	}
 
 	if outputJson.Error != nil {
-		return nil, fmt.Errorf(outputJson.Error.Err)
+		return nil, errors.New(outputJson.Error.Err)
 	}
 
 	return outputJson.Versions, nil
@@ -133,7 +133,7 @@ func getLatestVersionFromGoBinary(modulePath string) (Info, error) {
 	}
 
 	if outputJson.Error != nil {
-		return Info{}, fmt.Errorf(outputJson.Error.Err)
+		return Info{}, errors.New(outputJson.Error.Err)
 	}
 
 	return Info{Version: outputJson.Version, Time: outputJson.Time}, nil
