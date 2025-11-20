@@ -58,7 +58,6 @@ func run() error {
 	eg.SetLimit(*updateLimit)
 
 	for i := range paths {
-		i := i
 		eg.Go(func() error {
 			if *verbose {
 				log.Printf("Checking path (%v)\n", paths[i])
