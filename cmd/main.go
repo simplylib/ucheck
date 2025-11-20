@@ -20,15 +20,18 @@ func run() error {
 	verbose := flag.Bool("v", false, "be more verbose about what we are doing")
 
 	flag.CommandLine.Usage = func() {
-		fmt.Fprintln(
+		// Errors here are failing to be printed to stdout, which is our only way of communication
+		// So ignoring these errors is valid, since we could not do anything about it anyway
+
+		_, _ = fmt.Fprintln(
 			flag.CommandLine.Output(),
 			"Usage: "+os.Args[0]+" <flags> <project dir(s)>\n",
 		)
-		fmt.Fprintln(
+		_, _ = fmt.Fprintln(
 			flag.CommandLine.Output(),
 			"Project directory is optional and can be multiple directories separated by a space, defaults to current directory",
 		)
-		fmt.Fprintln(
+		_, _ = fmt.Fprintln(
 			flag.CommandLine.Output(),
 			"\nFlags: ",
 		)
