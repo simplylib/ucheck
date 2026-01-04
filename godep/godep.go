@@ -47,7 +47,6 @@ func (gp *GoDep) CheckGoModBytesForUpdates(ctx context.Context, b []byte) ([]Upd
 		mu      sync.Mutex
 	)
 	for _, require := range requires {
-		require := require
 		eg.Go(func() error {
 			info, err := gp.Proxy.GetLatestVersion(ctx, require.Mod.Path)
 			if err != nil {
